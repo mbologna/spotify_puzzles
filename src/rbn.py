@@ -32,9 +32,9 @@ class ReversedBinaryNumber(object):
 
 if __name__ == '__main__':
     try:
-        input_number = raw_input('Insert a number: ')
+        input_number = input('Insert a number: ')
         output_number = ReversedBinaryNumber.convert(input_number)
         print(output_number)
     except ValueError:
-        print "nice try"
+        print("nice try")
 

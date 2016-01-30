@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from inputvalidator import InputValidator
+from .inputvalidator import InputValidator
 
 class Song(object):
     def __init__(self, index, name, listen_count):
@@ -34,7 +34,7 @@ class Song(object):
         if self.get_quality() == other.get_quality():
             return self.get_index() < other.get_index()
         else:
-            # heapq is a min-heap, so a song is lt than another if it has 
+            # heapq is a min-heap, so a song is lt than another if it has
             # a greater quality (inverted!)
             return self.get_quality() > other.get_quality()
 

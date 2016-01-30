@@ -1,3 +1,5 @@
+import sys
+
 class NumberConverter(object):
     BASE = 2
 
@@ -28,7 +30,7 @@ class ReversedBinaryNumber(object):
 
 if __name__ == '__main__':
     try:
-        INPUT_NUMBER = input('Insert a number: ')
+        INPUT_NUMBER = sys.stdin.readline()
         OUTPUT_NUMBER = ReversedBinaryNumber.convert(INPUT_NUMBER)
         print(OUTPUT_NUMBER)
     except ValueError:

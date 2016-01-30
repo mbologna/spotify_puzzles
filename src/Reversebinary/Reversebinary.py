@@ -1,6 +1,3 @@
-__author__ = 'Michele Bologna'
-
-
 class NumberConverter(object):
     BASE = 2
 
@@ -11,7 +8,6 @@ class NumberConverter(object):
     @staticmethod
     def bin_to_dec(number):
         return int(number, NumberConverter.BASE)
-
 
 class ReversedBinaryNumber(object):
     @staticmethod
@@ -32,9 +28,9 @@ class ReversedBinaryNumber(object):
 
 if __name__ == '__main__':
     try:
-        input_number = input('Insert a number: ')
-        output_number = ReversedBinaryNumber.convert(input_number)
-        print(output_number)
+        INPUT_NUMBER = input('Insert a number: ')
+        OUTPUT_NUMBER = ReversedBinaryNumber.convert(INPUT_NUMBER)
+        print(OUTPUT_NUMBER)
     except ValueError:
         print("nice try")
 

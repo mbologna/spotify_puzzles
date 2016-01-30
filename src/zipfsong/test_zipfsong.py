@@ -1,6 +1,6 @@
 import pytest
 from .song import Song
-from .zipfsong_io import ZipfSong
+from .zipfsong import ZipfSong
 
 def test_case_1():
     input_str = """4 2

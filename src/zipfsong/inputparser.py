@@ -1,4 +1,4 @@
-from inputvalidator import InputValidator
+from .inputvalidator import InputValidator
 
 class Parser(object):
     @staticmethod

@@ -1,8 +1,8 @@
 # coding=utf-8
 import sys
-from song import Song
-from zipfclassifier import ZipfClassifier
-from inputparser import Parser
+from .song import Song
+from .zipfclassifier import ZipfClassifier
+from .inputparser import Parser
 
 class ZipfSong(object):
     def __init__(self):

@@ -1,6 +1,7 @@
 import pytest
-from .song import Song
-from .zipfsong import ZipfSong
+from zipfsong import Song
+from zipfsong import ZipfSong
+from zipfsong import Parser
 
 def test_case_1():
     input_str = """4 2
@@ -10,7 +11,13 @@ def test_case_1():
     25 four
     """
     expected = [Song(4, "four", 25), Song(2, "two", 30)]
-    assert ZipfSong.extract_top_k_songs(input_str) == expected
+
+    N_TRACKS_TO_SELECT = Parser.parse_input_first_line(input_str.split("\n")[0])[1]
+    TRACKLIST = input_str.split("\n")[1:]
+    TRACKLIST = map(str.strip, TRACKLIST)
+    TRACKLIST = [track for track in TRACKLIST if track != '']
+
+    assert ZipfSong.extract_top_k_songs(N_TRACKS_TO_SELECT, TRACKLIST) == expected
 
 def test_case_2():
     input_str = """15 3
@@ -34,7 +41,12 @@ def test_case_2():
                 Song(5, "clint_eastwood", 210492),
                 Song(3, "tomorrow_comes_today", 189518)]
 
-    assert ZipfSong.extract_top_k_songs(input_str) == expected
+    N_TRACKS_TO_SELECT = Parser.parse_input_first_line(input_str.split("\n")[0])[1]
+    TRACKLIST = input_str.split("\n")[1:]
+    TRACKLIST = map(str.strip, TRACKLIST)
+    TRACKLIST = [track for track in TRACKLIST if track != '']
+
+    assert ZipfSong.extract_top_k_songs(N_TRACKS_TO_SELECT, TRACKLIST) == expected
 
 def test_case_3():
     input_str = """6 6
@@ -52,12 +64,37 @@ def test_case_3():
                 Song(5, "five", 12),
                 Song(6, "six", 10)]
 
-    assert ZipfSong.extract_top_k_songs(input_str) == expected
+    N_TRACKS_TO_SELECT = Parser.parse_input_first_line(input_str.split("\n")[0])[1]
+    TRACKLIST = input_str.split("\n")[1:]
+    TRACKLIST = map(str.strip, TRACKLIST)
+    TRACKLIST = [track for track in TRACKLIST if track != '']
+
+    assert ZipfSong.extract_top_k_songs(N_TRACKS_TO_SELECT, TRACKLIST) == expected
+
+def test_case_4():
+    input_str = """6 3
+    60 one
+    30 two
+    20 three
+    15 four
+    120 five
+    100 six"""
+
+    expected = [Song(5, "five", 120),
+                Song(6, "six", 100),
+                Song(1, "one", 60)]
+
+    N_TRACKS_TO_SELECT = Parser.parse_input_first_line(input_str.split("\n")[0])[1]
+    TRACKLIST = input_str.split("\n")[1:]
+    TRACKLIST = map(str.strip, TRACKLIST)
+    TRACKLIST = [track for track in TRACKLIST if track != '']
+
+    assert ZipfSong.extract_top_k_songs(N_TRACKS_TO_SELECT, TRACKLIST) == expected
 
 def test_case_exception():
     input_str = """50001 50001
     10 abc"""
 
     with pytest.raises(ValueError) as exc:
-        ZipfSong.extract_top_k_songs(input_str)
-    assert exc.value.args[0] == "number of songs out of boundaries"
+        N_TRACKS_TO_SELECT = Parser.parse_input_first_line(input_str.split("\n")[0])[1]
+        assert exc.value.args[0] == "number of songs out of boundaries"

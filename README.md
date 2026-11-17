@@ -1,6 +1,3 @@
 # spotify_puzzles
-Spotify Puzzles: my solutions
 
-Puzzles are published at https://labs.spotify.com/puzzles/
-
-My solutions are presented with filename = `Problem ID`
+My solutions to two programming puzzles that Spotify Labs published at `labs.spotify.com/puzzles`, a page that is no longer online: Reversed Binary Numbers and Zipf's Song. Each solution is in `src/`, under the puzzle's Problem ID (`reversebinary`, `zipfsong`).
